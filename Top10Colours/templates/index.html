@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <title>Colour Collector</title>
+</head>
+<body>
+<div class="container col-xxl-8 px-4 py-5">
+   <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+       <div class="col-10 col-sm-8 col-lg-6"> <img src="{{ url_for('static', filename='test.jpg') }}" class="d-block mx-lg-auto img-fluid" alt="test.jpg" width="700" height="500" loading="lazy"> </div>
+
+
+       <div class="col-lg-6">
+         <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Get the top 10 colours of your image here.</h1>
+         <p class="lead">Just upload your picture here.</p><form action="/file-uploaded" method="POST" enctype="multipart/form-data">
+          <div class="mb-3">
+            <label for="formFile" class="form-label">Upload your file</label>
+             <input name="file" class="form-control" type="file" id="formFile">
+        </div>
+         <div class="d-grid gap-2 d-md-flex justify-content-md-start"> <button type="submit"  class="btn btn-primary btn-lg px-4 me-md-2">Run</button></div>
+        </form>
+       </div>
+
+   </div>
+</div>
+
+<div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-5 align-items-center justify-content-center">
+   <div class="list-group">
+       {% for colour in colours %}
+      <a href="{{ url_for('copy_colour', colour=colour) }}" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+        <div class="rounded-circle flex-shrink-0" style="width: 32px; height: 32px; background-color: {{ colour }};"></div>
+         <div class="d-flex gap-2 w-100 justify-content-between">
+            <div>
+               <h6 class="mb-0">{{colours.index(colour) + 1}}. {{ colour }}</h6>
+               <p class="mb-0 opacity-75">Click to copy</p>
+            </div>
+         </div>
+      </a>
+       {% endfor %}
+   </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>
