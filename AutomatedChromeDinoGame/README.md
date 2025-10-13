@@ -1,0 +1,1 @@
+Note: This game can fail on other systems
