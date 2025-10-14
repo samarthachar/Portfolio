@@ -44,3 +44,4 @@ while True:
         print('works')
         pyautogui.press('space')
         time.sleep(0.1)
+
