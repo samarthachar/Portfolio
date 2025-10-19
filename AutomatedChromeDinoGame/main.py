@@ -6,9 +6,7 @@ import time
 
 driver = webdriver.Chrome()
 driver.get('https://www.chromedino.com')
-
 driver.implicitly_wait(10)
-
 button = driver.find_element(By.CSS_SELECTOR, ".fc-button.fc-cta-consent.fc-primary-button")
 button.click()
 
