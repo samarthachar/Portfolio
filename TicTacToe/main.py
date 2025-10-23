@@ -1,3 +1,5 @@
+#Note: This is a cli game
+
 import random
 import time
 
